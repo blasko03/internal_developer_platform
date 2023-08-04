@@ -1,8 +1,8 @@
-﻿namespace Core;
+﻿namespace Core.Code;
 public interface ICommit
 {
     string Id { get; set; }
-    string Description { get; set; }
+    string Message { get; set; }
 }
 
 public interface ICommits

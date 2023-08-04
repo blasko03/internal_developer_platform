@@ -7,7 +7,7 @@ internal class CommitResponse
         return new Commit
         {
             Id = element.Sha,
-            Description = element.Commit.Message
+            Message = element.Commit.Message
         };
     }
     public required string Sha { get; set; }
