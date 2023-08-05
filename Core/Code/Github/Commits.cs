@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using Core.Code.Github.JsonParsing;
+using AppRunner.Core.Code.Github.JsonParsing;
 
 namespace AppRunner.Core.Code.Github;
 
