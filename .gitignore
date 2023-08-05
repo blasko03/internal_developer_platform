@@ -135,3 +135,5 @@ _NCrunch*
 Todo
 old
 coverage.json
+TestResults/*
+coverage.cobertura.xml

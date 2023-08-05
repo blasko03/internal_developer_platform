@@ -1,15 +1,25 @@
 ﻿using System.Net.Http.Headers;
 
 namespace AppRunner.Core.Code.Github;
-public class Client
+public class HttpClientWrapped : IHttpClientWrapper
 {
-    public static HttpClient Get()
+    private HttpClient HttpClient { get; set; }
+    public HttpClientWrapped()
     {
-        HttpClient client = new();
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+        HttpClient = new HttpClient();
+        HttpClient.DefaultRequestHeaders.Accept.Clear();
+        HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        HttpClient.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
         // client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_SECRET")}");
-        return client;
     }
+
+    public Task<string> GetStringAsync(string requestUri)
+    {
+        return HttpClient.GetStringAsync(requestUri);
+    }
+}
+
+public interface IHttpClientWrapper
+{
+    Task<string> GetStringAsync(string requestUri);
 }
