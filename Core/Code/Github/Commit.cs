@@ -1,4 +1,4 @@
-﻿namespace Core.Code.Github;
+﻿namespace AppRunner.Core.Code.Github;
 
 public class Commit : ICommit
 {

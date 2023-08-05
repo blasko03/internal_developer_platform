@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Core.Code.Github.JsonParsing;
 
-namespace Core.Code.Github;
+namespace AppRunner.Core.Code.Github;
 
 public class Commits : ICommits
 {

@@ -1,4 +1,4 @@
-﻿namespace Core.Code.Github.JsonParsing;
+﻿namespace AppRunner.Core.Code.Github.JsonParsing;
 
 internal class CommitResponse
 {

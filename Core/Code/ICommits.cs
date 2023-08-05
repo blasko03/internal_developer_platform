@@ -1,4 +1,4 @@
-﻿namespace Core.Code;
+﻿namespace AppRunner.Core.Code;
 public interface ICommit
 {
     string Id { get; set; }

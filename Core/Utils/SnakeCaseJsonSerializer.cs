@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Core;
+namespace AppRunner.Core;
 
 public class SnakeCaseJsonSerializer : JsonNamingPolicy
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.Controllers;
+namespace AppRunner.Backend.Controllers;
 
 [ApiController]
 [Route("api/commits")]

@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
 
-namespace Core.Code.Github;
+namespace AppRunner.Core.Code.Github;
 public class Client
 {
     public static HttpClient Get()
