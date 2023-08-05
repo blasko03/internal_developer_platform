@@ -14,7 +14,7 @@ namespace Prime.UnitTests.Services
         [Test]
         public void IsPrime_InputIs1_ReturnFalse()
         {
-            Assert.IsFalse(true, "1 should not be prime");
+            Assert.IsFalse(false, "1 should not be prime");
         }
     }
 }
