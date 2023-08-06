@@ -7,8 +7,7 @@ public class Pipelines : Github, IPipelines
 
     public async Task<IPipeline[]> GetPipelines(string owner, string repo)
     {
-        var pipelines = await GetData<PipelinesResponse, PipelinesRes>($"https://api.github.com/repos/{owner}/{repo}/actions/runs");
-        return pipelines.PipelineRuns;
+        return await GetData<PipelinesResponse, Pipeline[]>($"https://api.github.com/repos/{owner}/{repo}/actions/runs", PipelinesResponse.ConvertResponse);
     }
 }
 

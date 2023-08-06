@@ -2,13 +2,9 @@
 
 internal class PipelinesResponse
 {
-    public static explicit operator PipelinesRes(PipelinesResponse element)
+    public static Pipeline[] ConvertResponse(PipelinesResponse element)
     {
-        return new PipelinesRes
-        {
-            TotalCount = element.TotalCount,
-            PipelineRuns = element.WorkflowRuns.Select(wr => (Pipeline)wr).ToArray()
-        };
+        return element.WorkflowRuns.Select(wr => (Pipeline)wr).ToArray();
     }
     public required int TotalCount { get; set; }
     public required PipelineRunsResponse[] WorkflowRuns { get; set; }

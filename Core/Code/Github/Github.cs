@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace AppRunner.Core.Code.Github;
 
@@ -18,18 +17,10 @@ public class Github
         }
     }
 
-    public async Task<dynamic> GetData<TSource, TResult>(string url)
+    public async Task<TResult> GetData<TSource, TResult>(string url, Func<TSource, TResult> dataConverter)
     {
         var fileString = await Client.GetStringAsync(url);
         var data = JsonSerializer.Deserialize<TSource>(fileString, SnakeCaseJsonSerializer.Options())!;
-        Console.WriteLine(typeof(TSource));
-        if (typeof(TSource).IsArray)
-        {
-            return ((IEnumerable)data).Cast<object>().Select(commit => (TResult)(dynamic)commit!).ToArray();
-        }
-        else
-        {
-            return (TResult)(dynamic)data;
-        }
+        return dataConverter(data)!;
     }
 }

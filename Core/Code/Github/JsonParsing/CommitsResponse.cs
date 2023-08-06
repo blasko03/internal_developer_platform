@@ -2,13 +2,18 @@
 
 internal class CommitResponse
 {
-    public static explicit operator Commit(CommitResponse element)
+    public static explicit operator Commit(CommitResponse response)
     {
         return new Commit
         {
-            Id = element.Sha,
-            Message = element.Commit.Message
+            Id = response.Sha,
+            Message = response.Commit.Message
         };
+    }
+
+    public static Commit[] ConvertResponse(CommitResponse[] response)
+    {
+        return response.Select(element => (Commit)element).ToArray();
     }
 
     public required string Sha { get; set; }

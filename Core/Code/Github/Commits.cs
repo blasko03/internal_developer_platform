@@ -8,6 +8,6 @@ public class Commits : Github, ICommits
 
     public async Task<ICommit[]> GetCommits(string owner, string repo)
     {
-        return await GetData<CommitResponse[], Commit>($"https://api.github.com/repos/{owner}/{repo}/commits");
+        return await GetData<CommitResponse[], Commit[]>($"https://api.github.com/repos/{owner}/{repo}/commits", CommitResponse.ConvertResponse);
     }
 }
