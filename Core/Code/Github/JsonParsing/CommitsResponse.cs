@@ -10,6 +10,7 @@ internal class CommitResponse
             Message = element.Commit.Message
         };
     }
+
     public required string Sha { get; set; }
     public required CommitDettailsJson Commit { get; set; }
 }
