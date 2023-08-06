@@ -8,14 +8,9 @@ public class CallGetCommits
 {
     private class HttpClientWrapper : IHttpClientWrapper
     {
-        private static async Task<string> GetString()
-        {
-            await Task.Delay(1);
-            return "[{\"sha\": \"dfgdgdfgd\", \"commit\": { \"message\": \"dfgdggrg\" }}]";
-        }
         public Task<string> GetStringAsync(string requestUri)
         {
-            return GetString();
+            return File.ReadAllTextAsync(Path.Combine("test_files", "get_commits.json"));
         }
     }
     [Test]

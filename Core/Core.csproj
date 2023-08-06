@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(Configuration) == 'Debug'">
+    <None Include=".\test_files\**" Link="test_files\%(RecursiveDir)%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <PackageReference Include="coverlet.collector" Version="6.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
