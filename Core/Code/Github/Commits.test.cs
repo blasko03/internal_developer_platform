@@ -7,7 +7,8 @@ namespace AppRunner.Core.UnitTests.Commits;
 [TestFixture]
 public class CallGetCommits
 {
-    private static Task<string> TestData(){
+    private static Task<string> TestData()
+    {
         return File.ReadAllTextAsync(Path.Combine("test_files", "get_commits.json"));
     }
     [Test]

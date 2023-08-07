@@ -1,6 +1,6 @@
 ﻿using AppRunner.Core.Code.Github;
-using NUnit.Framework;
 using Moq;
+using NUnit.Framework;
 
 namespace AppRunner.Core.UnitTests.Pipelines;
 
