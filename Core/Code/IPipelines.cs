@@ -1,7 +1,7 @@
 ﻿namespace AppRunner.Core.Code;
 public interface IPipeline
 {
-    string Id { get; set; }
+    long Id { get; set; }
     string Message { get; set; }
 }
 

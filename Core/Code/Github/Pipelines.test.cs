@@ -1,22 +1,22 @@
 ﻿using AppRunner.Core.Code.Github;
 using NUnit.Framework;
+using Moq;
 
 namespace AppRunner.Core.UnitTests.Pipelines;
 
 [TestFixture]
 public class CallGetPipelines
 {
-    private class HttpClientWrapper : IHttpClientWrapper
+    private static Task<string> TestData()
     {
-        public Task<string> GetStringAsync(string requestUri)
-        {
-            return File.ReadAllTextAsync(Path.Combine("test_files", "get_pipelines.json"));
-        }
+        return File.ReadAllTextAsync(Path.Combine("test_files", "get_pipelines.json"));
     }
+
     [Test]
     public async Task GetsPipelinesFromService()
     {
-        var mockHttpClient = new HttpClientWrapper();
-        Assert.IsTrue((await new Code.Github.Pipelines(mockHttpClient).GetPipelines("nodejs", "node")).Length > 0, "Should get an array of commits");
+        var httpClientMock = new Mock<IHttpClientWrapper>();
+        httpClientMock.Setup(p => p.GetStringAsync(It.IsAny<string>())).Returns(TestData());
+        Assert.IsTrue((await new Code.Github.Pipelines(httpClientMock.Object).GetPipelines("nodejs", "node")).Length > 0, "Should get an array of pipelines");
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System.Net.Http.Headers;
 
 namespace AppRunner.Core.Code.Github;
-public class HttpClientWrapped : IHttpClientWrapper
+public class HttpClientWrapper : IHttpClientWrapper
 {
     private HttpClient HttpClient { get; set; }
-    public HttpClientWrapped()
+    public HttpClientWrapper()
     {
         HttpClient = new HttpClient();
         HttpClient.DefaultRequestHeaders.Accept.Clear();

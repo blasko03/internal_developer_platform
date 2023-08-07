@@ -7,14 +7,7 @@ public class Github
     protected IHttpClientWrapper Client { get; set; }
     public Github(IHttpClientWrapper? client = null)
     {
-        if (client != null)
-        {
-            Client = client;
-        }
-        else
-        {
-            Client = new HttpClientWrapped();
-        }
+        Client = client ?? new HttpClientWrapper();
     }
 
     public async Task<TResult> GetData<TSource, TResult>(string url, Func<TSource, TResult> dataConverter)

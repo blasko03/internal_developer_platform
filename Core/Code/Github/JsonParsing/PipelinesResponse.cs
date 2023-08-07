@@ -16,9 +16,10 @@ internal class PipelineRunsResponse
     {
         return new Pipeline
         {
-            Id = "element.TotalCount,",
+            Id = element.Id,
             Message = element.Name
         };
     }
+    public required long Id { get; set; }
     public required string Name { get; set; }
 }
