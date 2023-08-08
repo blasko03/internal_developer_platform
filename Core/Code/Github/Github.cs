@@ -10,9 +10,9 @@ public class Github
         Client = client ?? new HttpClientWrapper();
     }
 
-    public async Task<TResult> GetData<TSource, TResult>(string url, Func<TSource, TResult> dataConverter)
+    public async Task<TResult> GetData<TSource, TResult>(UriBuilder path, Func<TSource, TResult> dataConverter)
     {
-        var fileString = await Client.GetStringAsync(url);
+        var fileString = await Client.GetStringAsync(path.Uri);
         var data = JsonSerializer.Deserialize<TSource>(fileString, SnakeCaseJsonSerializer.Options())!;
         return dataConverter(data)!;
     }

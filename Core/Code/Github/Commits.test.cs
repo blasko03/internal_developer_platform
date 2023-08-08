@@ -15,7 +15,7 @@ public class CallGetCommits
     public async Task GetsCommitsFromService()
     {
         var httpClientMock = new Mock<IHttpClientWrapper>();
-        httpClientMock.Setup(p => p.GetStringAsync(It.IsAny<string>())).Returns(TestData());
+        httpClientMock.Setup(p => p.GetStringAsync(It.IsAny<Uri>())).Returns(TestData());
         Assert.IsTrue((await new Code.Github.Commits(httpClientMock.Object).GetCommits("nodejs", "node")).Length > 0, "Should get an array of commits");
     }
 }

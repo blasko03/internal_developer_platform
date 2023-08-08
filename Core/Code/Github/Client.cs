@@ -13,7 +13,7 @@ public class HttpClientWrapper : IHttpClientWrapper
         // client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_SECRET")}");
     }
 
-    public Task<string> GetStringAsync(string requestUri)
+    public Task<string> GetStringAsync(Uri requestUri)
     {
         return HttpClient.GetStringAsync(requestUri);
     }
@@ -21,5 +21,5 @@ public class HttpClientWrapper : IHttpClientWrapper
 
 public interface IHttpClientWrapper
 {
-    Task<string> GetStringAsync(string requestUri);
+    Task<string> GetStringAsync(Uri requestUri);
 }

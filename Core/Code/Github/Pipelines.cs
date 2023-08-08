@@ -7,7 +7,7 @@ public class Pipelines : Github, IPipelines
 
     public async Task<IPipeline[]> GetPipelines(string owner, string repo)
     {
-        return await GetData<PipelinesResponse, Pipeline[]>($"https://api.github.com/repos/{owner}/{repo}/actions/runs", PipelinesResponse.ConvertResponse);
+        return await GetData<PipelinesResponse, Pipeline[]>(new UriBuilder($"https://api.github.com/repos/{owner}/{repo}/actions/runs"), PipelinesResponse.ConvertResponse);
     }
 }
 
