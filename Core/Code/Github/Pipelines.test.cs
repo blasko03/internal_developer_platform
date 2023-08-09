@@ -1,5 +1,5 @@
 ﻿using AppRunner.Core.Code.Github;
-using Moq;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace AppRunner.Core.UnitTests.Pipelines;
@@ -15,8 +15,8 @@ public class CallGetPipelines
     [Test]
     public async Task GetsPipelinesFromService()
     {
-        var httpClientMock = new Mock<IHttpClientWrapper>();
-        httpClientMock.Setup(p => p.GetStringAsync(It.IsAny<Uri>())).Returns(TestData());
-        Assert.IsTrue((await new Code.Github.Pipelines(httpClientMock.Object).GetPipelines("nodejs", "node")).Length > 0, "Should get an array of pipelines");
+        var httpClientMock = Substitute.For<IHttpClientWrapper>();
+        httpClientMock.GetStringAsync(default!).ReturnsForAnyArgs(TestData());
+        Assert.IsTrue((await new Code.Github.Pipelines(httpClientMock).GetPipelines("nodejs", "node")).Length > 0, "Should get an array of pipelines");
     }
 }

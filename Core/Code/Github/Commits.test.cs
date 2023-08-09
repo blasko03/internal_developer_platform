@@ -1,5 +1,5 @@
 ﻿using AppRunner.Core.Code.Github;
-using Moq;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace AppRunner.Core.UnitTests.Commits;
@@ -14,8 +14,8 @@ public class CallGetCommits
     [Test]
     public async Task GetsCommitsFromService()
     {
-        var httpClientMock = new Mock<IHttpClientWrapper>();
-        httpClientMock.Setup(p => p.GetStringAsync(It.IsAny<Uri>())).Returns(TestData());
-        Assert.IsTrue((await new Code.Github.Commits(httpClientMock.Object).GetCommits("nodejs", "node")).Length > 0, "Should get an array of commits");
+        var httpClientMock = Substitute.For<IHttpClientWrapper>();
+        httpClientMock.GetStringAsync(default!).ReturnsForAnyArgs(TestData());
+        Assert.IsTrue((await new Code.Github.Commits(httpClientMock).GetCommits("nodejs", "node")).Length > 0, "Should get an array of commits");
     }
 }
